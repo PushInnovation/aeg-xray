@@ -1,0 +1,10 @@
+aeg-logger:
+  transports:
+    - type: console
+      level: debug
+
+aeg-mysql:
+  host: X
+  user: X
+  password: X
+  port: 3306

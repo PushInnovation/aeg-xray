@@ -1,0 +1,21 @@
+{
+	"rules": [
+		{
+			"segmentNameMatch": "test-http",
+			"force": true
+		},
+		{
+			"segmentNameMatch": "test-middleware",
+			"force": true
+		},
+		{
+			"segmentNameMatch": "tes.*",
+			"fixedTarget": 1,
+			"fallbackRate": 0.05
+		}
+	],
+	"default": {
+		"fixedTarget": 1,
+		"fallbackRate": 0.05
+	}
+}
