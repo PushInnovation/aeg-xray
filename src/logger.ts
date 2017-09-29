@@ -1,4 +1,4 @@
-import { ILogger } from '@adexchange/aeg-logger';
+import { ILogger } from '@push_innovation/aeg-logger';
 
 export class Logger {
 
