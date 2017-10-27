@@ -12,7 +12,7 @@ export default class Segment extends SegmentBase {
 	public static fromLambdaContext (options: { emitProgress?: boolean } = {}): Segment {
 
 		const lambda = LambdaContext.segment;
-		const segment = new Segment(lambda.name, options);
+		const segment = new Segment(process.env.functionName, options);
 		segment._traceId = lambda.trace_id;
 		segment._id = lambda.id;
 		segment._startTime = lambda.start_time;
