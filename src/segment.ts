@@ -11,7 +11,7 @@ export default class Segment extends SegmentBase {
 
 	public static fromLambdaContext (options: { emitProgress?: boolean } = {}): Segment {
 
-		const lambda = LambdaContext.segment();
+		const lambda = LambdaContext.segment;
 		const segment = new Segment(lambda.name, options);
 		segment._traceId = lambda.traceId;
 		segment._id = lambda.id;
