@@ -9,10 +9,10 @@ import LambdaContext from './lambda/lambda-context';
 
 export default class Segment extends SegmentBase {
 
-	public static fromLambdaContext (options: { emitProgress?: boolean } = {}): Segment {
+	public static fromLambdaContext (context: any, options: { emitProgress?: boolean } = {}): Segment {
 
 		const lambda = LambdaContext.segment;
-		const segment = new Segment(process.env.functionName, options);
+		const segment = new Segment(context.functionName, options);
 		segment._traceId = lambda.trace_id;
 		segment._id = lambda.id;
 		segment._startTime = lambda.start_time;
