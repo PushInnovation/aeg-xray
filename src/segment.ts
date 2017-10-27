@@ -13,7 +13,7 @@ export default class Segment extends SegmentBase {
 
 		const lambda = LambdaContext.segment;
 		const segment = new Segment(lambda.name, options);
-		segment._traceId = lambda.traceId;
+		segment._traceId = lambda.trace_id;
 		segment._id = lambda.id;
 		segment._startTime = lambda.start_time;
 		return segment;
