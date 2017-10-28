@@ -35,6 +35,12 @@ export class LambdaContext {
 	 */
 	public processTraceHeader (): IAmazonTraceHeader {
 
+		if (!process.env._X_AMZN_TRACE_ID) {
+
+			return {};
+
+		}
+
 		const parts = process.env._X_AMZN_TRACE_ID.split(';');
 
 		return _.reduce<string, IAmazonTraceHeader>(parts, (m, header) => {
