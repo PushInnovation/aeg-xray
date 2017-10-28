@@ -32,6 +32,18 @@ export default class LambdaSegment extends Segment {
 
 	}
 
+	public close () {
+
+		this._closed = true;
+
+		this.flush().catch(() => {
+
+			// nothing to do
+
+		});
+
+	}
+
 	public async closeAsync () {
 
 		this._closed = true;
