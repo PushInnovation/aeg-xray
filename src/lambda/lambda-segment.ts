@@ -1,5 +1,6 @@
 import LambdaContext from '../lambda/lambda-context';
 import Segment from '../segment';
+import logger from '../logger';
 
 export default class LambdaSegment extends Segment {
 
@@ -7,10 +8,20 @@ export default class LambdaSegment extends Segment {
 
 		super('facade');
 
-		const lambda = LambdaContext.segment;
-		this._id = lambda.id;
-		this._traceId = lambda.trace_id;
-		this._startTime = lambda.start_time;
+		const segment = LambdaContext.segment;
+
+		if (segment) {
+
+			this._id = segment.id;
+			this._traceId = segment.trace_id;
+			this._startTime = segment.start_time;
+
+		} else {
+
+			logger.warn('XRAY segment not found in Lambda context');
+
+		}
+
 		this._isSampled = true;
 
 	}
@@ -21,7 +32,7 @@ export default class LambdaSegment extends Segment {
 
 	}
 
-	public async close () {
+	public async closeAsync () {
 
 		this._closed = true;
 
