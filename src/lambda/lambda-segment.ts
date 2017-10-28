@@ -27,7 +27,7 @@ export default class LambdaSegment extends Segment {
 
 			} else {
 
-				logger.debug('XRAY trace header  found', trace);
+				logger.debug('XRAY trace header found', trace);
 				this._id = trace.Parent;
 				this._traceId = trace.Root;
 
