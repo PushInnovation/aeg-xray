@@ -12,6 +12,7 @@ export default function captureRequestPromise (module: any): any {
 
 		if (_.isObject(uri)) {
 
+			options = uri;
 			uriResolved = uri.uri;
 
 		} else {
