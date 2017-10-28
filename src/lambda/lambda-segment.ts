@@ -12,13 +12,26 @@ export default class LambdaSegment extends Segment {
 
 		if (segment) {
 
+			logger.debug('XRAY sdk context segment found');
 			this._id = segment.id;
 			this._traceId = segment.trace_id;
 			this._startTime = segment.start_time;
 
 		} else {
 
-			logger.warn('XRAY segment not found in Lambda context');
+			const trace = LambdaContext.processTraceHeader();
+
+			if (!trace.Root || !trace.Parent) {
+
+				logger.warn('XRAY trace header not found in Lambda context');
+
+			} else {
+
+				logger.debug('XRAY trace header  found', trace);
+				this._id = trace.Parent;
+				this._traceId = trace.Root;
+
+			}
 
 		}
 
