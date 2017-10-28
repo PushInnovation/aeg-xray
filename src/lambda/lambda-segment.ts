@@ -11,7 +11,7 @@ export default class LambdaSegment extends Segment {
 		this._id = lambda.id;
 		this._traceId = lambda.trace_id;
 		this._startTime = lambda.start_time;
-		this._isSampled = false;
+		this._isSampled = true;
 
 	}
 
